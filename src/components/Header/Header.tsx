@@ -105,7 +105,9 @@ const Header: React.FC = () => {
                             <span></span>
                         </div>
                     </div>
-                    <Categories />
+                    <div className="categories-desktop">
+                        <Categories />
+                    </div>
                 </div>
 
             </header >

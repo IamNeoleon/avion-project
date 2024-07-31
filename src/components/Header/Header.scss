@@ -27,12 +27,8 @@
             }
         }
 
-        .categories {
+        .categories-desktop {
             display: none;
-
-            @media (max-width: 768px) {
-                display: block;
-            }
         }
 
         .header__logo {
@@ -100,7 +96,7 @@
         }
 
         .categories {
-            display: block;
+            display: block !important;
             padding: 0;
         }
     }
