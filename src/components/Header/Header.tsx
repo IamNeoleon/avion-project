@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import headerLogo from '../../assets/header-logo.png'
 import { useAppSelector } from '../../hooks/hooks';
 import { selectCartItems, selectTotalPrice } from '../../redux/slices/cartSlice';
 import Categories from '../Categories/Categories';
