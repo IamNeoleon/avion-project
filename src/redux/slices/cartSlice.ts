@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import { ICartItem } from '../../@types'
+import { getCartFromLS } from '../../utils/getCartFromLs'
 
 // Define a type for the slice state
 export interface ICartState {
@@ -9,10 +10,12 @@ export interface ICartState {
     totalPrice: number
 }
 
+const cartData = getCartFromLS();
+
 // Define the initial state using that type
 const initialState = {
-    cartItems: [],
-    totalPrice: 0
+    cartItems: cartData.items,
+    totalPrice: cartData.totalPrice
 } satisfies ICartState as ICartState
 
 export const cartSlice = createSlice({

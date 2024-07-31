@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import headerLogo from '../../assets/header-logo.png'
 import { useAppSelector } from '../../hooks/hooks';
-import { selectCartItems } from '../../redux/slices/cartSlice';
+import { selectCartItems, selectTotalPrice } from '../../redux/slices/cartSlice';
 import Categories from '../Categories/Categories';
 import Search from '../Search/Search';
 import classNames from 'classnames';
@@ -13,8 +13,10 @@ import './Header.scss';
 
 
 const Header: React.FC = () => {
+    const isMounted = useRef<boolean>(false);
     const [countCartItems, setCountCartItems] = useState<number>(0)
     const cartItems = useAppSelector(selectCartItems);
+    const totalPrice = useAppSelector(selectTotalPrice);
     const [stateBurger, setStateBurger] = useState<boolean>(false);
     const [isFixed, setIsFixed] = useState<boolean>(false);
     const headerRef = useRef<HTMLDivElement | null>(null);
@@ -48,6 +50,19 @@ const Header: React.FC = () => {
         } else {
             setCountCartItems(0)
         }
+    }, [cartItems])
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const jsonCartItems = JSON.stringify(cartItems)
+            const jsonTotalPrice = JSON.stringify(totalPrice)
+            const dataForLS = JSON.stringify({
+                items: jsonCartItems,
+                totalPrice: jsonTotalPrice
+            })
+            localStorage.setItem('cart', dataForLS)
+        }
+        isMounted.current = true
     }, [cartItems])
 
     return (
