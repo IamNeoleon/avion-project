@@ -1,0 +1,32 @@
+.newProducts {
+    padding: 60px 0;
+
+    // .newProducts__inner
+    &__inner {}
+
+    // .newProducts__title
+    &__title {}
+
+    // .newProducts__cards
+    &__cards {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 30px;
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card {
+            flex: 0 1 25%;
+        }
+    }
+
+    // newProducts__btn
+    &__btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+    }
+}

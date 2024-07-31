@@ -1,0 +1,307 @@
+.products {
+
+    // .products__top
+    &__top {
+        padding: 80px 0 0;
+
+        @media (max-width: 768px) {
+            padding: 40px 0 0;
+        }
+    }
+
+    // .products__title
+    &__title {
+        font-size: 36px;
+        color: $dark;
+        text-align: center;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+        }
+    }
+
+    // .products__main
+    &__main {
+        padding: 36px 0;
+    }
+
+    // .products__sidebar
+    &__sidebar {
+        flex: 0 1 385px;
+        padding: 50px 20px 50px 0;
+    }
+
+    // .products__filters
+    &__filters {
+        display: flex;
+        padding-bottom: 12px;
+    }
+
+    // .products__filter
+    &__filter {
+        display: flex;
+    }
+
+    // .products__items
+    &__items {
+        flex: 1 1 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 36px;
+        margin-bottom: 32px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 552px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card {
+            width: 100%;
+        }
+    }
+
+    // .products__btn
+    &__btn {
+        display: block;
+        padding: 16px 32px;
+        color: $dark;
+        background-color: #F9F9F9;
+        font-size: 16px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+.filter-products {
+    position: relative;
+
+    &.active {
+        .filter-products__title {
+            &::after {
+                transform: translate(0, 1px) rotate(180deg);
+            }
+        }
+
+        .filter-products__content {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(0, 0);
+        }
+    }
+
+    &--price {
+        .filter-products__content {
+            width: 175px;
+        }
+    }
+
+    &--designer {
+        .filter-products__content {
+            width: 200px;
+        }
+    }
+
+    // .filter-products__title
+    &__title {
+        display: flex;
+        padding: 12px 24px;
+        color: $dark;
+        align-items: center;
+        background-color: #f9f9f9;
+        font-family: 'Satoshi', sans-serif;
+        margin-right: 12px;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            transform: translate(0, 1px);
+            border-top: 6px solid $dark;
+            margin-left: 8px;
+            transition: transform 0.2s linear;
+        }
+
+
+    }
+
+    // .filter-products 
+    &__content {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(0, 20px);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 2;
+        background-color: #f9f9f9;
+        padding: 20px;
+        transition: transform 0.2s linear;
+    }
+}
+
+.filter-designer {
+    margin-bottom: 5px;
+    font-family: 'Satoshi';
+    display: flex;
+    align-items: center;
+
+    input {
+        margin-right: 12px;
+    }
+}
+
+.filters {
+
+    // .filters__filter
+    &__filter {
+        h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.filter-price {
+    width: 100%;
+    font-family: 'Satoshi';
+
+    // .filter-price__inputs
+    &__inputs {
+        max-width: 100%;
+        margin-bottom: 5px;
+    }
+
+    // .filter-price__input
+    &__input {
+        flex: 0 1 49%;
+
+        label {
+            font-family: 'Satoshi';
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+            font-family: 'Satoshi';
+            border-radius: 5px;
+            border: 1px solid #3C3D41;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0;
+            /* <-- Apparently some margin are still there even though it's hidden */
+        }
+    }
+
+    // .filter-price__btns
+    &__btns {
+
+        button {
+            width: 100%;
+            font-family: 'Satoshi';
+            padding: 10px;
+            flex: 0 1 49%;
+            background-color: #4e4d93;
+            color: #fff;
+            font-size: 16px;
+            border: 1px solid #fff;
+            transition: background-color 0.1s linear;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: darken($color: #4e4d93, $amount: 10%);
+            }
+        }
+    }
+}
+
+.products-enter {
+    opacity: 0;
+}
+
+.products-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s linear;
+}
+
+.products-exit {
+    opacity: 1;
+}
+
+.products-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.products__items-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.products__items-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.products__items-exit {
+    opacity: 1;
+}
+
+.products__items-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.fade-product-title-enter {
+    opacity: 0;
+    transform: scale(-20px);
+}
+
+.fade-product-title-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.fade-product-title-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-product-title-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.fade-cards-enter {
+    opacity: 0;
+}
+
+.fade-cards-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.fade-cards-exit {
+    opacity: 1;
+}
+
+.fade-cards-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}

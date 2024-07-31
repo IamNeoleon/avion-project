@@ -1,0 +1,74 @@
+@import '../../scss/vars';
+
+.signup {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+
+    // .signup__inner
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: $dark;
+        max-width: 470px;
+        margin: 0 auto;
+    }
+
+    // .signup__title
+    &__title {
+        font-size: 36px;
+        line-height: 1.4;
+        margin-bottom: 16px;
+
+        @media (max-width: 552px) {
+            font-size: 32px;
+        }
+    }
+
+    // .signup__text
+    &__text {
+        font-size: 16px;
+        font-family: 'Satoshi';
+        margin-bottom: 50px;
+    }
+
+    // .signup__form
+    &__form {
+        display: flex;
+
+    }
+
+    // .signup__input
+    &__input {
+        input {
+            width: 100%;
+            height: 100%;
+            padding: 15px 30px;
+            border: none;
+            font-size: 16px;
+            font-family: 'Satoshi';
+            background-color: #eee;
+
+            &::placeholder {
+                font-family: 'Satoshi';
+                color: #ccc;
+                font-size: 16px;
+            }
+        }
+    }
+
+    // .signup__btn
+    &__btn {
+        padding: 16px 32px;
+        background-color: $dark;
+        color: #fff;
+        font-family: 'Satoshi';
+        font-size: 16px;
+        white-space: nowrap;
+
+        @media (max-width: 552px) {
+            font-size: 14px;
+        }
+    }
+}

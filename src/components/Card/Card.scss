@@ -1,0 +1,41 @@
+.card {
+    cursor: pointer;
+    transition: transform 0.1s linear;
+
+    @media (any-hover: hover) {
+        &:hover {
+            transform: scale(105%);
+        }
+    }
+
+    // .card__img
+    &__img {
+        width: 100%;
+        aspect-ratio: 305 / 375;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // .card__title
+    &__title {
+        margin: 15px 0 5px;
+        font-size: 20px;
+
+        @media (max-width: 992px) {
+            font-size: 18px;
+            margin: 5px 0 2px;
+        }
+    }
+
+    // .card__price
+    &__price {
+        @media (max-width: 425px) {
+            font-size: 14px;
+        }
+    }
+}
