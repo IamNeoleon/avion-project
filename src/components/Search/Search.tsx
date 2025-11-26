@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/redux';
 import { setSearchValue } from '../../redux/slices/filterSlice';
 import debounce from 'lodash.debounce';
 import classNames from 'classnames';

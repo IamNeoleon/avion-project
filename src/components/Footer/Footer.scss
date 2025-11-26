@@ -5,9 +5,6 @@
     background-color: $dark;
     color: #fff;
 
-    // .footer__inner
-    &__inner {}
-
     // .footer__top
     &__top {
         display: flex;
@@ -46,9 +43,6 @@
     &__title {
         font-size: 16px;
     }
-
-    // .footer__list
-    &__list {}
 
     // .footer__list-item
     &__list-item {
@@ -128,12 +122,4 @@
     &__copyright {
         font-family: 'Satoshi', sans-serif;
     }
-
-    // .footer__socials
-    &__socials {}
-
-    // .footer__icon
-    &__icon {}
 }
-
-.container {}

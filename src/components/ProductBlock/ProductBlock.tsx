@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ICartItem } from '../../@types';
 import { addItem, selectCartItems } from '../../redux/slices/cartSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { CSSTransition } from 'react-transition-group';
 
 import './ProductBlock.scss';
@@ -115,7 +115,6 @@ const ProductBlock: React.FC<IProductBlockProps> = ({ id, title, price, imageUrl
                             <button disabled={isInCart} onClick={handleAddItem} className={isInCart ? 'product__btn product__btn--add btn added' : 'product__btn product__btn--add btn'}>
                                 {!isInCart ? 'Add to cart' : 'Added to cart'}
                             </button>
-                            <button className="product__btn product__btn--save btn">Save to favorites</button>
                         </div>
                     </div>
                 </div>

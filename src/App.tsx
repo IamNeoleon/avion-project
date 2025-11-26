@@ -1,16 +1,14 @@
-
 import { Route, Routes } from 'react-router-dom'
-import Products from './pages/Products'
-
+import { Suspense, lazy } from "react"
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import MainComp from './components/MainComp/MainComp'
-import Product from './pages/Product'
-import Cart from './pages/Cart'
-
-
 import './scss/index.scss'
 
+const Home = lazy(() => import('./pages/Home'))
+const Products = lazy(() => import('./pages/Products'))
+const Product = lazy(() => import('./pages/Product'))
+const Cart = lazy(() => import('./pages/Cart'))
+const Checkout = lazy(() => import('./pages/Checkout'))
 
 function App() {
 
@@ -19,16 +17,18 @@ function App() {
             <div className="wrapper">
                 <Header />
                 <div className="content">
-                    <Routes>
-                        <Route path="/" element={<MainComp />} />
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/products/:id" element={<Product />} />
-                        <Route path="/cart" element={<Cart />} />
-                    </Routes>
+                    <Suspense fallback={<div className="loading-screen">Loading...</div>}>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/products" element={<Products />} />
+                            <Route path="/products/:id" element={<Product />} />
+                            <Route path="/cart" element={<Cart />} />
+                            <Route path="/checkout" element={<Checkout />} />
+                        </Routes>
+                    </Suspense>
                 </div>
                 <Footer />
             </div>
-
         </>
     )
 }

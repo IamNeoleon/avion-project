@@ -1,16 +1,15 @@
 import React from 'react';
-
-import Intro from '../Intro/Intro'
-import Skills from '../Skills/Skills'
-import NewProducts from '../NewProducts/NewProducts'
-import SignUp from '../SignUp/SignUp'
-import Features from '../Features/Features'
-
 import { CSSTransition } from 'react-transition-group';
-import AnimatedBlock from '../AnimatedBlock/AnimatedBlock';
+
+import Intro from '../components/Intro/Intro'
+import Skills from '../components/Skills/Skills'
+import NewProducts from '../components/NewProducts/NewProducts'
+import SignUp from '../components/SignUp/SignUp'
+import Features from '../components/Features/Features'
+import AnimatedBlock from '../components/AnimatedBlock/AnimatedBlock';
 
 
-const MainComp: React.FC = () => {
+const Home: React.FC = () => {
     const mainRef = React.useRef<HTMLElement | null>(null);
     const [inProp, setInProp] = React.useState<boolean>(false);
 
@@ -43,4 +42,4 @@ const MainComp: React.FC = () => {
     );
 };
 
-export default MainComp;
+export default Home;

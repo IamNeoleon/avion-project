@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/redux';
 import { setPrice } from '../../redux/slices/filterSlice';
 
 

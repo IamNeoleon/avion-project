@@ -1,22 +1,12 @@
 .cart {
     padding: 60px 0 50px;
-    background-color: #f9f9f9;
     color: $dark;
-
-    // .cart__inner
-    &__inner {}
 
     // .cart__title
     &__title {
         font-size: 36px;
         margin-bottom: 45px;
     }
-
-    // .cart__products
-    &__products {}
-
-    // .cart__top
-    &__top {}
 
     // .cart__items
     &__items {
@@ -118,21 +108,6 @@
 
     @media (max-width: 768px) {
         display: none;
-    }
-
-    // .top-cart__title
-    &__title {
-
-        // .top-cart__title--name-
-        &--name- {
-            flex: 0 1 48%;
-        }
-
-        // .top-cart__title--count
-        &--count {}
-
-        // .top-cart__title--total
-        &--total {}
     }
 }
 

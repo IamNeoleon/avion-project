@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppDispatch } from '../../hooks/hooks';
-import { deleteItem, increaseQuantity, reduceQuantity } from '../../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/redux';
+import { deleteItem, increaseQuantity, reduceQuantity } from '../../redux/slices/cartSlice';
 
 interface ICartItemProps {
     id: number,

@@ -1,50 +1,63 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { productsApi } from '../redux/productsApi';
-import { addItems, setItems, setLoading, selectItems, selectLoading } from '../redux/slices/productsSlice';
-import { selectFilter } from '../redux/slices/filterSlice';
+import { useEffect, useState, useRef, useMemo } from "react"
+import { ICard } from "../@types"
+import { productsApi } from "../redux/productsApi";
+import { useParamsQuery } from "./useParamsQuery";
+import { useAppSelector } from "./redux";
+import { selectFilter } from "../redux/slices/filterSlice";
+import { getErrorMessage } from "../utils/getErrorMessage";
 
-export const useProducts = (limit: number) => {
-    const { category, designers, price, searchValue } = useAppSelector(selectFilter);
 
-    const [page, setPage] = useState<number>(1);
-    const [totalItems, setTotalItems] = useState<number>(0);
-    const location = useLocation();
-    const dispatch = useAppDispatch();
-    const items = useAppSelector(selectItems);
-    const isLoading = useAppSelector(selectLoading);
+export const useProducts = () => {
+	const { category, designers, price, searchValue, page } = useAppSelector(selectFilter);
+	const { paramsQuery } = useParamsQuery();
+	const query = useMemo(() => paramsQuery(), [category, designers, price, searchValue, page]);
+	const [products, setProducts] = useState<ICard[]>([]);
+	const [canILoadMore, setCanILoadMore] = useState<boolean>(true)
+	const prevFilters = useRef({
+		category,
+		designers,
+		price,
+		searchValue,
+	});
 
-    const categoryQuery = category ? category : '';
-    const designersQuery = designers ? `&${designers}` : '';
-    const priceQuery = price ? price : '';
-    const searchQuery = searchValue ? `&title=*${searchValue}` : '';
+	const { data, isLoading, isError, error } = productsApi.useGetProductsQuery(query);
+	const err = getErrorMessage(error)
 
-    const paramsQuery = `limit=${limit}&page=${page}${categoryQuery}${designersQuery}${priceQuery}${searchQuery}`;
+	useEffect(() => {
+		if (!data?.items) return;
 
-    const { data, error, isFetching } = productsApi.useGetProductsQuery(paramsQuery);
+		if (data?.meta?.remaining_count === 0) {
+			console.log(data?.meta?.remaining_count)
+			console.log('here')
+			setCanILoadMore(false);
+		} else {
+			setCanILoadMore(true);
+		}
 
-    useEffect(() => {
-        if (category) {
-            setPage(1);
-        }
-    }, [category]);
+		const filtersChanged =
+			prevFilters.current.category !== category ||
+			prevFilters.current.searchValue !== searchValue ||
+			JSON.stringify(prevFilters.current.designers) !== JSON.stringify(designers) ||
+			JSON.stringify(prevFilters.current.price) !== JSON.stringify(price);
 
-    useEffect(() => {
-        dispatch(setLoading(isFetching));
-        if (data) {
-            if (page === 1) {
-                dispatch(setItems(data.items));
-            } else {
-                dispatch(addItems(data.items));
-            }
-            if (data.meta.total_items) {
-                setTotalItems(data.meta.total_items);
-            }
-        }
-    }, [data, isFetching, dispatch, page, category, location.pathname]);
+		if (filtersChanged) {
+			setProducts(data.items);
+			prevFilters.current = { category, designers, price, searchValue };
 
-    const loadMore = () => setPage(prevPage => prevPage + 1);
+			return;
+		}
+		if (page === 1) {
+			setProducts(data.items);
+		} else {
+			setProducts(prev => [...prev, ...data.items]);
+		}
+	}, [data]);
 
-    return { items, isLoading, error, page, setPage, loadMore, totalItems, category };
+	return {
+		products,
+		isLoading,
+		isError,
+		err,
+		canILoadMore
+	};
 };

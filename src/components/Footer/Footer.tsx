@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
                                     <div className="footer__title">Our company</div>
                                     <ul className="footer__list">
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>About uss</a>
+                                            <a href="/" target='_blank'>About us</a>
                                         </li>
                                         <li className="footer__list-item">
                                             <a href="/" target='_blank'>Vacancies</a>

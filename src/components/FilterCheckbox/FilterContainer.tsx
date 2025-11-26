@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { designersData } from '../../assets/data';
 import FilterCheckbox from './FilterCheckbox';
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/redux';
 import { setDesigners } from '../../redux/slices/filterSlice';
 
 const FilterContainer: React.FC = () => {

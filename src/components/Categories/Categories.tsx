@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { categories } from '../../assets/data';
 import classNames from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { selectFilter, setCategory } from '../../redux/slices/filterSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { selectFilter, setCategory, setPage } from '../../redux/slices/filterSlice';
 
 import './Categories.scss';
+import { useProducts } from '../../hooks/useProducts';
 
 interface ICategoriesProps {
     stateBurger?: boolean,
@@ -17,16 +18,17 @@ const Categories: React.FC<ICategoriesProps> = ({ stateBurger, setStateBurger })
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const { category, page } = useAppSelector(selectFilter);
+
 
     const isProductsPage = location.pathname === '/products';
-    const { category } = useAppSelector(selectFilter)
-    const clearCaregory = category.split('=')[1];
 
 
     const handleClickCategory = (category: string) => {
         if (stateBurger && setStateBurger) {
             setStateBurger();
         }
+        dispatch(setPage(1))
         dispatch(setCategory(category))
     }
 
@@ -41,10 +43,14 @@ const Categories: React.FC<ICategoriesProps> = ({ stateBurger, setStateBurger })
             <div className="categories">
                 <ul className="categories__list">
                     <Link to='/products'>
-                        <li onClick={() => handleClickCategory('')} className={classNames('categories__item', { 'active': isProductsPage && !clearCaregory })}>All products</li>
+                        <li onClick={() => handleClickCategory('')} className={classNames('categories__item', { 'active': isProductsPage && !category })}>All products</li>
                     </Link>
                     {categories.map((item, index) => (
-                        <li key={index} onClick={() => handleClickCategory(item)} className={classNames('categories__item', { 'active': isProductsPage && clearCaregory === item })}>
+                        <li key={index} onClick={() => handleClickCategory(item)}
+                            className={classNames('categories__item', {
+                                'active': isProductsPage && category.toLowerCase() === item.toLowerCase()
+                            })}
+                        >
                             {item}
                         </li>
                     ))}

@@ -69,7 +69,7 @@ button {
 
 .content {
     flex: 1 1 auto;
-    padding-top: 200px;
+    padding-top: 130px;
 
     @media (max-width: 768px) {
         padding-top: 60px;
@@ -137,8 +137,15 @@ button {
     transition: opacity 0.2s linear;
 }
 
+.loading-screen {
+    text-align: center;
+    font-size: 18px;
+    padding: 150px 0;
+}
+
 
 // components
 
 @import './components/products';
 @import './components/cart';
+@import './components/checkout';

@@ -9,8 +9,8 @@ interface IAnimatedBlockProps {
 
 const AnimatedBlock: React.FC<IAnimatedBlockProps> = ({ children }) => {
     const { ref, inView } = useInView({
-        triggerOnce: true, // Анимация сработает только один раз
-        threshold: 0.1, // Процент видимости элемента, при котором сработает анимация
+        triggerOnce: true,
+        threshold: 0.1,
     });
 
     return (

@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import useProduct from '../hooks/useProduct';
+import { productsApi } from '../redux/productsApi';
 import ProductBlock from '../components/ProductBlock/ProductBlock';
+import { useParams } from 'react-router-dom';
+import { getErrorMessage } from '../utils/getErrorMessage';
 
 const Product: React.FC = () => {
-    const { item, loading } = useProduct();
+    const { id } = useParams()
+    const { data: productItem, isLoading, isError, error } = productsApi.useGetProductQuery(id)
     const [inProp, setInProp] = useState<boolean>(false);
     const nodeRef = useRef(null);
+    const err = getErrorMessage(error)
 
     useEffect(() => {
         setInProp(true);
@@ -16,25 +20,34 @@ const Product: React.FC = () => {
         <CSSTransition in={inProp} timeout={300} classNames="productPage" unmountOnExit nodeRef={nodeRef}>
             <div ref={nodeRef} className="productPage">
                 <div className="container">
-                    {loading ? (
-                        <div>Загрузка...</div>
-                    ) : item ? (
-                        <ProductBlock
-                            id={item.id}
-                            title={item.title}
-                            price={item.price}
-                            imageUrl={item.imageUrl}
-                            description={item.description}
-                            size={item.size}
-                            category={item.category}
-                            designer={item.designer}
-                        />
-                    ) : (
-                        <div>Товар не найден</div>
-                    )}
+                    {
+                        isLoading ? (
+                            <div>Loading...</div>
+                        ) : (
+                            isError ? (
+                                <>
+                                    <div>Error loading product</div>
+                                    <div>{err}</div>
+                                </>
+                            ) : (
+                                productItem && (
+                                    <ProductBlock
+                                        id={productItem.id}
+                                        title={productItem.title}
+                                        price={productItem.price}
+                                        imageUrl={productItem.imageUrl}
+                                        description={productItem.description}
+                                        size={productItem.size}
+                                        category={productItem.category}
+                                        designer={productItem.designer}
+                                    />
+                                )
+                            )
+                        )
+                    }
                 </div>
             </div>
-        </CSSTransition>
+        </CSSTransition >
     );
 };
 
