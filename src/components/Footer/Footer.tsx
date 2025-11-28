@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Footer.scss';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
     return (
@@ -14,18 +15,18 @@ const Footer: React.FC = () => {
                                     <div className="footer__title">Menu</div>
                                     <ul className="footer__list">
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>New arrivals</a>
+                                            <Link to="/not-found">New arrivals</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Best sellers</a></li>
+                                            <Link to="/not-found">Best sellers</Link></li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Recently viewed</a>
+                                            <Link to="/not-found">Recently viewed</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Popular this week</a>
+                                            <Link to="/not-found">Popular this week</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>All products</a>
+                                            <Link to="/not-found">All products</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -33,22 +34,22 @@ const Footer: React.FC = () => {
                                     <div className="footer__title">Categories</div>
                                     <ul className="footer__list">
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Crockery</a>
+                                            <Link to="/not-found">Crockery</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Furniture</a>
+                                            <Link to="/not-found">Furniture</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Homeware</a>
+                                            <Link to="/not-found">Homeware</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Plant pots</a>
+                                            <Link to="/not-found">Plant pots</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Chairs</a>
+                                            <Link to="/not-found">Chairs</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Crockery</a>
+                                            <Link to="/not-found">Crockery</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -56,19 +57,19 @@ const Footer: React.FC = () => {
                                     <div className="footer__title">Our company</div>
                                     <ul className="footer__list">
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>About us</a>
+                                            <Link to="/not-found">About us</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Vacancies</a>
+                                            <Link to="/not-found">Vacancies</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Contact us</a>
+                                            <Link to="/not-found">Contact us</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Privacy</a>
+                                            <Link to="/not-found">Privacy</Link>
                                         </li>
                                         <li className="footer__list-item">
-                                            <a href="/" target='_blank'>Returns policy</a>
+                                            <Link to="/not-found">Returns policy</Link>
                                         </li>
                                     </ul>
                                 </div>
