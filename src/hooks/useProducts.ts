@@ -27,8 +27,6 @@ export const useProducts = () => {
 		if (!data?.items) return;
 
 		if (data?.meta?.remaining_count === 0) {
-			console.log(data?.meta?.remaining_count)
-			console.log('here')
 			setCanILoadMore(false);
 		} else {
 			setCanILoadMore(true);

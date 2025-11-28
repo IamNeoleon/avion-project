@@ -3,7 +3,9 @@ import { ICard, IResponseFetch } from "../@types";
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://641eb661a0edc326.mokky.dev/' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://641eb661a0edc326.mokky.dev/'
+    }),
     endpoints: (build) => ({
         getProducts: build.query<IResponseFetch, string>({
             query: (params) => ({

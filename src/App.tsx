@@ -9,6 +9,7 @@ const Products = lazy(() => import('./pages/Products'))
 const Product = lazy(() => import('./pages/Product'))
 const Cart = lazy(() => import('./pages/Cart'))
 const Checkout = lazy(() => import('./pages/Checkout'))
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'))
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                             <Route path="/products/:id" element={<Product />} />
                             <Route path="/cart" element={<Cart />} />
                             <Route path="/checkout" element={<Checkout />} />
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </Suspense>
                 </div>
