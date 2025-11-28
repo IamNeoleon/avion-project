@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
 import { categories } from '../../assets/data';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { selectFilter, setCategory, setPage } from '../../redux/slices/filterSlice';
 
 import './Categories.scss';
-import { useProducts } from '../../hooks/useProducts';
 
 interface ICategoriesProps {
     stateBurger?: boolean,
@@ -18,7 +16,7 @@ const Categories: React.FC<ICategoriesProps> = ({ stateBurger, setStateBurger })
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const { category, page } = useAppSelector(selectFilter);
+    const { category } = useAppSelector(selectFilter);
 
 
     const isProductsPage = location.pathname === '/products';
