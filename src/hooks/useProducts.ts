@@ -2,12 +2,13 @@ import { useEffect, useState, useRef, useMemo } from "react"
 import { ICard } from "../@types"
 import { productsApi } from "../redux/productsApi";
 import { useParamsQuery } from "./useParamsQuery";
-import { useAppSelector } from "./redux";
-import { selectFilter } from "../redux/slices/filterSlice";
+import { useAppDispatch, useAppSelector } from "./redux";
+import { selectFilter, setPage } from "../redux/slices/filterSlice";
 import { getErrorMessage } from "../utils/getErrorMessage";
 
 
 export const useProducts = () => {
+	const dispatch = useAppDispatch()
 	const { category, designers, price, searchValue, page } = useAppSelector(selectFilter);
 	const { paramsQuery } = useParamsQuery();
 	const query = useMemo(() => paramsQuery(), [category, designers, price, searchValue, page]);
@@ -22,6 +23,10 @@ export const useProducts = () => {
 
 	const { data, isLoading, isError, error } = productsApi.useGetProductsQuery(query);
 	const err = getErrorMessage(error)
+
+	useEffect(() => {
+		dispatch(setPage(1))
+	}, [])
 
 	useEffect(() => {
 		if (!data?.items) return;
