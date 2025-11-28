@@ -145,6 +145,7 @@ button {
 
 // components
 
-@import './components/products';
-@import './components/cart';
-@import './components/checkout';
+@import './pages/products';
+@import './pages/cart';
+@import './pages/checkout';
+@import './pages/notfound';

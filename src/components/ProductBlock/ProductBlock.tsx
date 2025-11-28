@@ -90,16 +90,16 @@ const ProductBlock: React.FC<IProductBlockProps> = ({ id, title, price, imageUrl
                             <div className="dimesions__title">Dimensions</div>
                             <div className="dimesions__items">
                                 <div className="dimesions__item">
-                                    <div className="dimesions__item-title">Height</div>
-                                    <div className="dimesions__value">{size[0]}cm</div>
+                                    <div className="dimesions__item-title">Width</div>
+                                    <div className="dimesions__value">{size[0]} cm</div>
                                 </div>
                                 <div className="dimesions__item">
-                                    <div className="dimesions__item-title">Width</div>
-                                    <div className="dimesions__value">{size[1]}cm</div>
+                                    <div className="dimesions__item-title">Height</div>
+                                    <div className="dimesions__value">{size[1]} cm</div>
                                 </div>
                                 <div className="dimesions__item">
                                     <div className="dimesions__item-title">Depth</div>
-                                    <div className="dimesions__value">{size[2]}cm</div>
+                                    <div className="dimesions__value">{size[2]} cm</div>
                                 </div>
                             </div>
                         </div>
