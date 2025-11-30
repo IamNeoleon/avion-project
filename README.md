@@ -1,13 +1,13 @@
 # 🛍️ Avion (Mock API)
 
-Frontend-проект интернет-магазина с каталогом товаров, фильтрацией, поиском и корзиной.
-Приложение работает на mock API, без реального бэкенда. Состояние корзины сохраняется в localStorage.
+Frontend e-commerce application with a product catalog, filtering, search, and shopping cart functionality.  
+The application works with a mock API without a real backend. The shopping cart state is persisted using localStorage.
 
 ---
 
 ## 🚀 Demo
 
-🔗 https://your-demo-link.vercel.app
+🔗 https://avion-nu.vercel.app/
 
 ---
 
@@ -24,34 +24,33 @@ Frontend-проект интернет-магазина с каталогом т
 
 ---
 
-## ✅ Functional
+## ✅ Features
 
-- Каталог товаров
-- Страница товара
-- Поиск по товарам
-- Фильтрация по:
-  - цене
-  - дизайнеру
-- Корзина:
-  - добавление товара
-  - удаление
-  - изменение количества
-  - сохранение между сессиями
-- Синхронизация фильтров с URL
-- Обработка состояний:
+- Product catalog
+- Product details page
+- Product search
+- Filtering by:
+  - price
+  - designer
+- Shopping cart:
+  - add product
+  - remove product
+  - update quantity
+  - persistent storage between sessions (localStorage)
+- URL-synced filters
+- State handling:
   - loading
   - empty
   - error
-- Адаптивная верстка
-- Страница 404 (Not Found)
+- Responsive layout
+- 404 (Not Found) page
 
 ---
 
 ## 🖼️ Screenshots
 
-<!-- Добавь свои скриншоты -->
-![Catalog](./screens/catalog.png)
-![Product](./screens/product.png)
+![Catalog](./screens/catalog.png)  
+![Product](./screens/product.png)  
 ![Cart](./screens/cart.png)
 
 ---
