@@ -179,6 +179,11 @@
     &__desc {
         font-family: 'Satoshi', sans-serif;
         margin-bottom: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
     }
 
     // .item-cart__price

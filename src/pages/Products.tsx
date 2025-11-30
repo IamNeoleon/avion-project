@@ -6,6 +6,7 @@ import { useAnimations } from '../hooks/useAnimations';
 import FilterContainer from '../components/FilterCheckbox/FilterContainer';
 import FilterPrice from '../components/FilterPrice/FilterPrice';
 import { ProductsList } from '../components/ProductsList/ProductsList';
+import { ResetFilters } from '../components/ResetFilters/ResetFilters';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { selectFilter, setPage } from '../redux/slices/filterSlice';
 import { useProducts } from '../hooks/useProducts';
@@ -54,6 +55,7 @@ const Products: React.FC = () => {
                               <FilterContainer />
                            </div>
                         </div>
+                        <ResetFilters />
                      </div>
                      <ProductsList />
                      {

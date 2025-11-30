@@ -5,7 +5,7 @@ import Intro from '../components/Intro/Intro'
 import Skills from '../components/Skills/Skills'
 import NewProducts from '../components/NewProducts/NewProducts'
 import SignUp from '../components/SignUp/SignUp'
-import Features from '../components/Features/Features'
+import Features from '../components/features/Features'
 import AnimatedBlock from '../components/AnimatedBlock/AnimatedBlock';
 
 

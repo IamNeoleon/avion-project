@@ -9,6 +9,7 @@ import { useProducts } from '../../hooks/useProducts';
 export const ProductsList: React.FC = () => {
    const { products, isLoading, isError, err } = useProducts()
 
+
    return (
       <>
          <div className='products__items' style={{ display: !isError && products.length ? 'grid' : 'block' }}>

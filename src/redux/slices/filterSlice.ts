@@ -35,7 +35,7 @@ export const filterSlice = createSlice({
         },
         setPage(state, action: PayloadAction<number>) {
             state.page = action.payload;
-        },
+        }
     },
 })
 

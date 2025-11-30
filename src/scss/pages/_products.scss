@@ -35,6 +35,10 @@
     &__filters {
         display: flex;
         padding-bottom: 12px;
+
+        @media (max-width: 380px) {
+            flex-wrap: wrap;
+        }
     }
 
     // .products__filter
@@ -351,4 +355,26 @@
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.product__reset-filters {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transition: color 0.1s linear;
+    color: red;
+
+    svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    span {
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        color: rgb(102, 7, 7);
+    }
 }
